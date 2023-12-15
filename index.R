@@ -14,7 +14,7 @@ t <- theme(plot.title = element_text(face="bold"),
            panel.ontop = F,
            panel.grid.major.y = element_line(color='#5f7e89',size=0),
            panel.grid.minor.y = element_blank(),
-           # panel.grid.major.x = element_blank(),
+           panel.grid.major.x = element_blank(),
            panel.grid.minor.x = element_blank(),
            legend.text = element_text(size=f_size,color='#000000'),
            legend.title = element_text(face='bold',size=f_size,color='#000000'),
@@ -33,8 +33,9 @@ df %>%
   filter(Objective == "DSS05") %>%
   ggplot(aes(x = Maturity, y = n, fill = Decision)) +
   geom_bar(stat = 'identity') +
-  facet_grid(Objective ~ Practice) +
+  facet_grid(.~ Practice) +
   scale_x_continuous(breaks = c(1, 2, 3, 4)) +
   scale_y_continuous(breaks = c(0,1,2,3,4,5,6,7,8,9)) +
   scale_fill_manual(values = pal) +
+  labs(y='') +
   t
